@@ -1,0 +1,12 @@
+<div ng-controller="MainController">
+  <h1>Tasks</h1>
+  <ul>
+    <li ng-repeat="todo in todos">
+      Task : {{ todo.text }}
+    </li>
+  </ul>
+  <div>
+    Text: <input type="text" ng-model="newTask.text" />
+    <button ng-click="addTodo(newTask)">Add Task</button>
+  </div>
+</div>
