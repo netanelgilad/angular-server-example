@@ -5,5 +5,5 @@
 * mkdir packages
 * git clone https://github.com/Urigo/angular-meteor
 * git checkout feature/angular-server
-* meteor run
+* meteor
 
