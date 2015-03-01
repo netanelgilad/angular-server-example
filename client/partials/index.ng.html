@@ -1,12 +1,19 @@
 <div ng-controller="MainController">
-  <h1>Tasks</h1>
+  <h1>Objects</h1>
+  <h3> Count: {{ venues.length }}</h3>
+  <div>
+    <button ng-click="addObjects(newObjectsCount)">Add</button> <input type="number" ng-model="newObjectsCount"> Objects:
+  </div>
   <ul>
-    <li ng-repeat="todo in todos">
-      Task : {{ todo.text }}
+    <li ng-repeat="venue in venues" class="media" ng-class="isSelectedVenue(venue._id) ? 'active' : ''" ng-click="selectVenue(venue._id)">
+      <a class="media-left" href="">
+        {{ venue.photos[0] }}
+      </a>
+      <div class="media-body">
+        <h4 class="media-heading"><input type="text" ng-model="venue.name"></h4>
+        <p>{{venue.address}}</p>
+      </div>
+      <button ng-click="venues.splice($$index, 1)">Remove</button>
     </li>
   </ul>
-  <div>
-    Text: <input type="text" ng-model="newTask.text" />
-    <button ng-click="addTodo(newTask)">Add Task</button>
-  </div>
 </div>
