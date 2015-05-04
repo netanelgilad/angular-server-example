@@ -18,8 +18,7 @@ angular.module('todos')
       Data.getData().then(function(response) {
         $scope.response = response;
       }, function(error) {
-        $scope.response = 'Error:' + error;
-        console.log(error);
+        $scope.response = 'Error: Failed to get data from $http.';
       });
     }
   });
