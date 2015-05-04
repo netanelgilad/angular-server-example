@@ -3,7 +3,7 @@
  */
 
 angular.module('todos')
-  .service('TodosManager', function (Todos, $http, $document) {
+  .service('TodosManager', function (Todos) {
     this.addTodo = function (todo) {
       if (todo.text.length < 3) {
         console.log('Error trying to add a todo with less than 3 letters ', todo.text);
@@ -11,11 +11,6 @@ angular.module('todos')
       else {
         Todos.collection.insert(todo);
       }
-    };
-
-    this.callServer = function() {
-      console.log($document);
-      return $http.get('http://requestb.in/1divtht1');
     };
 
     Meteor.publish('todos', function () {
