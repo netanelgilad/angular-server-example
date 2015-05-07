@@ -1,24 +1,36 @@
 /**
  * Created by netanel on 27/02/15.
  */
-angular.module('todos')
+angular.module('todomvc')
   .controller('MainController', function($scope, Todos, $meteorCollection, TodosManager, Data) {
-    $scope.todos = $meteorCollection(Todos.collection, false).subscribe('todos');
+    $scope.todos = $meteorCollection(Todos.collection).subscribe('todos');
 
-    $scope.newTask = {
-      text : '1'
-    };
+    $scope.newTodo = '';
 
     $scope.addTodo = function () {
-      TodosManager.addTodo($scope.newTask);
-      $scope.newTask = {};
+      var todo = {
+        title : $scope.newTodo,
+        completed : false
+      };
+
+      $scope.error = undefined;
+      TodosManager.addTodo(todo).then(angular.noop, function(error) {
+        $scope.error = error;
+      });
+
+      $scope.newTodo = '';
     };
 
-    $scope.doCoolThing = function() {
+    $scope.removeTodo = function(todo) {
+      Todos.collection.remove({_id : todo._id});
+    };
+
+    $scope.getImageUrl = function() {
+      $scope.error = undefined;
       Data.getData().then(function(response) {
-        $scope.response = response;
-      }, function(error) {
-        $scope.response = 'Error: Failed to get data from $http.';
+        $scope.imageUrl = response.data;
+      }, function() {
+        $scope.error = 'Failed to get image url from $http';
       });
     }
   });

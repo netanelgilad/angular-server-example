@@ -2,11 +2,11 @@
  * Created by netanel on 27/02/15.
  */
 
-angular.module('todos')
+angular.module('todomvc')
   .service('TodosManager', function (Todos) {
     this.addTodo = function (todo) {
-      if (todo.text.length < 3) {
-        console.log('Error trying to add a todo with less than 3 letters ', todo.text);
+      if (todo.title.length < 3) {
+        throw new Meteor.Error(500, undefined, 'Title must be longer than 3 letters');
       }
       else {
         Todos.collection.insert(todo);
