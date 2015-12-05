@@ -45,7 +45,7 @@ mobile-experience@1.0.1
 mobile-status-bar@1.0.6
 mongo@1.1.3
 mongo-id@1.0.1
-netanelgilad:angular-server@1.4.4
+netanelgilad:angular-server@1.4.5
 netanelgilad:polyfill-angular-server@1.4.4
 npm-mongo@1.4.39_1
 observe-sequence@1.0.7

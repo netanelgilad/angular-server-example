@@ -15,7 +15,7 @@ angular.module('todomvc')
 
       $scope.error = undefined;
       TodosManager.addTodo(todo).then(angular.noop, function(error) {
-        $scope.error = error;
+        $scope.error = error.details;
       });
 
       $scope.newTodo = '';
